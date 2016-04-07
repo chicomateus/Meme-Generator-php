@@ -37,7 +37,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     var m = this.model;
     var d = this.model.toJSON();
 
-    console.log(d.aspectRatio);
+    console.log(d);
 
     var ctx = this.canvas.getContext('2d');
     var padding = Math.round(d.width * d.paddingRatio);

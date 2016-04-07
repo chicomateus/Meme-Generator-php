@@ -22,9 +22,12 @@
     <option value="" disabled>Select alignment</option>
   </select>
 
-  <select class="font-size" id="font-size">
+  <!-- <select class="font-size" id="font-size">
     <option value="" disabled>Select a font size</option>
-  </select>
+  </select> -->
+  <h4>Font Size</h4>
+    <input id="font-size" type="range" max="64" min="18" step=".1" value="24">
+ 
 
   <select class="font-family" id="font-family">
     <option value="" disabled>Select a font</option>
