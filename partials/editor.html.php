@@ -1,4 +1,15 @@
 <form class="m-editor" id="meme-editor-view">
+
+ <h4>Aspect Ratio</h4>
+    <select class="aspect-ratio" id="aspect-ratio">
+    <option value="" disabled="">Select aspect ratio</option>
+    <option value="twitter">2:1 (Twitter)</option> <!-- [W:1024px | H:512px] -->
+    <option value="instagram">1:1 (Twitter or Instagram)</option> <!-- [W:1080px | H:1080px] -->
+    <option value="facebook">Facebook</option> <!-- [W:1200px | H:630px] -->
+    <option value="pinterest">Pinterest </option> <!-- [W:736px | H:1128px] -->
+    </select>
+
+
   <div class="dropzone" id="dropzone">Drop Image Here</div>
   
   <h2><label for="image-scale">Resize image</label></h2>

@@ -72,6 +72,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     'input #headline': 'onHeadline',
     'input #credit': 'onCredit',
     'input #image-scale': 'onScale',
+    "change #aspect-ratio": "onAspectRatio",
     'change #font-size': 'onFontSize',
     'change #font-family': 'onFontFamily',
     'change #watermark': 'onWatermark',

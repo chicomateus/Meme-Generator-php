@@ -4,7 +4,10 @@
 */
 MEME.MemeModel = Backbone.Model.extend({
   defaults: {
+    aspectRatio: "twitter",
     backgroundPosition: { x: null, y: null },
+    backgroundColor: null,
+            backgroundColorOpts: ["#FFF", "#000", "#CCC"],
     creditText: 'Source:',
     creditSize: 12,
     downloadName: 'share',
