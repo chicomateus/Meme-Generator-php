@@ -37,7 +37,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     var m = this.model;
     var d = this.model.toJSON();
 
-    console.log(d);
+    //console.log(d);
 
     var ctx = this.canvas.getContext('2d');
     var padding = Math.round(d.width * d.paddingRatio);
@@ -61,7 +61,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     this.canvas.width = d.width;
     this.canvas.height = d.height;
     ctx.clearRect(0, 0, d.width, d.height);
-
+               
     function renderBackground(ctx) {
       // Base height and width:
       var bh = m.background.height;
@@ -94,10 +94,11 @@ MEME.MemeCanvasView = Backbone.View.extend({
       var maxWidth = Math.round(d.width * 0.75);
       var x = padding;
       var y = padding;
+      
 
       ctx.font = d.fontSize +'pt '+ d.fontFamily;
       ctx.fillStyle = d.fontColor;
-      ctx.textBaseline = 'top';
+      ctx.textBaseline = 'bottom';
 
       // Text shadow:
       if (d.textShadow) {
@@ -118,13 +119,55 @@ MEME.MemeCanvasView = Backbone.View.extend({
         ctx.textAlign = 'right';
         x = d.width - padding;
 
-      } else {
+      }else if (d.textAlign == 'left' ){
         ctx.textAlign = 'left';
       }
-
+     // console.log(d.headlineText);
       var words = d.headlineText.split(' ');
       var line  = '';
 
+      // //----------
+       var o = d.headlineText,
+            u = o.match(/\*[^\*_]+\*|_[^\*_]+_|\*_[^\*_]+_\*|_\*[^\*_]+\*_/g),
+            h = [],
+            f = {};
+  /*
+           "DINNextLTPro-BoldCondensed" == l.fontFamily || "Harriet display" == l.fontFamily ? l.fontStyle = "bold italic" : "Gotham SSm A, Gotham SSm B" == l.fontFamily && (l.fontStyle = ""), t.font = (l.fontStyle ? l.fontStyle + " " : "") + l.fontSize + "pt " + l.fontFamily, t.fillStyle = l.fontColor, t.textBaseline = "top", l.textShadow && (t.shadowColor = "#666", t.shadowOffsetX = -2, t.shadowOffsetY = 1, t.shadowBlur = 10);
+                var r = 0;
+                "left-right" == l.alternateLayout && (r = l.width / 2 - 2 * c), "center" == l.textAlign ? (t.textAlign = "center", n = l.width / 2, e = l.width - l.width / 3) : "right" == l.textAlign ? (t.textAlign = "right", n = l.width - c, e -= r) : (t.textAlign = "left", e -= r);
+                var a = parseInt(l.paddingScale);
+                "Align top" == l.textAlignVertical ? i = c + a : "Align middle" == l.textAlignVertical ? i = l.height - l.height / 1.5 : (t.textBaseline = "Align bottom", i = l.height - 3 * c - a), l.headUppercase && (l.headlineText = l.headlineText.toUpperCase());
+                
+
+*/
+
+                   
+           // u && (_.each(u, function(ctx) {
+           //          var t = ctx;
+           //          var e = t;
+           //          t.match(/\*_[^\*_]+_\*|_\*[^\*_]+\*_/g) ? (e = e.replace("_*", "%"), e = e.replace("*_", "%"), e = e.split(" ").join("% %"), h.unshift(t)) : (e = t.match(/\*[^\*_]+\*/g) ? t.split(" ").join("* *") : t.split(" ").join("_ _"), h.push(t));
+           //          var n = "\u2981" + e + "\u2981";
+           //          f[t] = n
+           //          console.log(n);
+           //      }), _.each(h, function(t) {
+           //          o = o.replace(t, f[t])
+           //      }), s = o.split(/\s/));
+           //      for (var z = d.headlineText.split(" "), p = "", g = "", v = "\u200a", m = "\u2009", y = "\u205f", w = "\u2002", x = [g, v, m, y, w], b = [], k = 0; k < z.length; k++) {
+           //          for (var C = 0; C < z[k].length; C++) b.push(z[k][C]), b.push(x[d.letterSpacing]);
+           //          b.push("&nbsp;")
+           //      }
+           //      for (var S = "", T = [], A = [], $ = 0; $ < b.length; $++) "&nbsp;" == b[$] ? (T.push(S), T.push(" "), S = "") : S += b[$];
+           //      if (z = T, "undefined" != typeof s) {
+           //          z = s;
+           //          for (var E = 0; E < z.length; E++) A.push(" ");
+           //          z = _.flatten(_.zip(z, A)), z = _.flatten(_.map(z, function(ctx) {
+           //              return ctx.split(/\u2981/)
+           //          }))
+           //      }
+            
+
+
+      //----------
       for (var n = 0; n < words.length; n++) {
         var testLine  = line + words[n] + ' ';
         var metrics   = ctx.measureText( testLine );
@@ -139,6 +182,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
         }
       }
 
+ 
       ctx.fillText(line, x, y);
       ctx.shadowColor = 'transparent';
     }

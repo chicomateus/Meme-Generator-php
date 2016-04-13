@@ -8,6 +8,8 @@ $m: '.m-editor';
     float: right;
     padding-left: 20px;
     width: 30%;
+    height: 500px;
+    overflow-y: scroll;
   }
 
   .dropzone {

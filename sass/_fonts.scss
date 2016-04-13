@@ -1,1 +1,46 @@
 
+@mixin font-face($name, $url) {
+  @font-face {
+    font-family: #{$name};
+    src: url('#{$url}.eot');
+    src: url('#{$url}.eot#iefix') format("embedded-opentype"),
+         url('#{$url}.ttf') format('truetype'),
+         url('#{$url}.svg##{$name}') format('svg'),
+         url('#{$url}.woff') format('woff');    
+    @content;
+  }
+}
+
+@mixin font_family($fname){
+	font-family: #{$fname};
+}
+
+//## Fonte: Proxima Nova
+
+	@include font-face('proxima_nova_rgregular','../fonts/ProximaNova/proxima_nova_regular-webfont'){
+		font-weight: normal;
+   		font-style: normal;
+	}
+	@include font-face('proxima_novaregular_italic','../fonts/ProximaNova/proxima_novaregular_italic'){
+		font-weight: normal;
+   		font-style: normal;
+	}
+	
+	@include font-face('proxima_nova_rgbold','../fonts/ProximaNova/proxima_nova_bold-webfont'){
+		font-weight: normal;
+   		font-style: normal;
+	}
+	@include font-face('proxima_nova_rgbold_italic','../fonts/ProximaNova/proxima_nova_bold_italic-webfont'){
+		font-weight: normal;
+   		font-style: normal;
+	}
+
+//## Fonte: Open Sans  e Lato
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700italic,700,400italic|Lato:400,400italic,700,700italic);
+
+/*
+font-family: 'Open Sans', sans-serif;
+
+font-family: 'Lato', sans-serif;
+*/

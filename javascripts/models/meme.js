@@ -16,6 +16,7 @@ MEME.MemeModel = Backbone.Model.extend({
     fontFamilyOpts: ['Helvetica', 'Helvetica Neue', 'Comic Sans MS'],
     fontSize: 24,
     fontSizeOpts: [14, 24, 36],
+    letterSpacing: 0,
     headlineText: 'Write your own headline',
     height: 378,
     imageScale: 1,
