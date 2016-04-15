@@ -37,7 +37,7 @@ var MEME_SETTINGS = {
     "#004C54",
     "#054087",
     "#343F38"],
-  paddingRatio: 0.09, // Percentage of canvas width to use as edge padding.
+  paddingRatio: 0.04, // Percentage of canvas width to use as edge padding.
   
   // Text alignment: valid settings are "left", "center", and "right".
   textAlign: 'left',
@@ -50,6 +50,9 @@ var MEME_SETTINGS = {
 
   textShadow: false, // Text shadow toggle.
   textShadowEdit: true, // Toggles text shadow control within the editor.
+  headUppercase: false, // Text headline text uppercase.
+  sourceUppercase: false, // Toggles source text uppercase.
+  textUppercaseEdit: false, // Toggles text uppercase control within the editor.
   watermarkAlpha: 1, // Opacity of watermark image.
   watermarkMaxWidthRatio: 0.20, // Maximum allowed width of watermark (percentage of total canvas width).
 

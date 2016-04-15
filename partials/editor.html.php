@@ -5,12 +5,14 @@
     <option value="" disabled="">Select aspect ratio</option>
     <option value="twitter">2:1 (Twitter)</option> <!-- [W:1024px | H:512px] -->
     <option value="instagram">1:1 (Twitter or Instagram)</option> <!-- [W:1080px | H:1080px] -->
-    <option value="facebook">Facebook</option> <!-- [W:1200px | H:630px] -->
+    <option value="facebookAdd">Facebook Add</option> <!-- [W:1200px | H:630px] -->
+     <option value="facebookPost">Facebook Post</option> <!-- [W:940px | H:788px] -->
+      <option value="facebookCover">Facebook Cover</option> <!-- [W:815px | H:315px] -->
     <option value="pinterest">Pinterest </option> <!-- [W:736px | H:1128px] -->
     </select>
 
   <div class="dropzone" id="dropzone">Drop Image Here</div>
-  
+  <input type="file" id="loadinput"></input>
   <h2><label for="image-scale">Resize image</label></h2>
   <input id="image-scale" type="range" max="4" min=".01" step=".01" value="1">
   
@@ -37,9 +39,16 @@
 
   <h5>Font Size</h5>
   <input id="font-size" type="range" max="64" min="18" step=".1" value="30">
-  <h5>Letter Spacing</h5>
-    <input id="letter-spacing" type="range" max="4" min="0" step="1" value="0">
 
+  <!-- <h5>Letter Spacing</h5>
+    <input id="letter-spacing" type="range" max="4" min="0" step="1" value="0">
+ -->
+<div class="checkbox-group text-case">
+    <input id="head-uppercase" name="head-uppercase" type="checkbox">
+    <label for="head-uppercase">Uppercase Headline</label>
+    <input id="source-uppercase" name="source-uppercase" type="checkbox">
+    <label for="source-uppercase">Uppercase Source</label>
+ </div>
   <div class="checkbox-group text-shadow">
     <input id="text-shadow" name="shadow" type="checkbox"> 
     <label for="text-shadow">Text Shadow</label>
@@ -53,6 +62,9 @@
 
   <h2><label for="credit">Credit</label></h2>
   <input id="credit" name="credit" type="text" value="">
+
+  <h5>Credit Font Size</h5>
+  <input id="credit-font-size" type="range" max="20" min="10" step="1" value="15">
 
   <div class="m-editor__overlay" id="overlay">
     <h2>Overlay Color</h2>

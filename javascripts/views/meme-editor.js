@@ -29,10 +29,13 @@ MEME.MemeEditorView = Backbone.View.extend({
       $('#text-align').append(buildOptions(d.textAlignOpts)).show();
     }
 
-    // Build font size options:
-    // if (d.fontSizeOpts && d.fontSizeOpts.length) {
-    //   $('#font-size').append(buildOptions(d.fontSizeOpts)).show();
-    // }
+    //Build font size options:
+    if (d.fontSize) {
+      $('#font-size').val(d.fontSize);
+    }
+    if (d.creditSize) {
+      $('#credit-font-size').val(d.creditSize);
+    }
 
     // Build font family options:
     if (d.fontFamilyOpts && d.fontFamilyOpts.length) {
@@ -62,10 +65,13 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.$('#watermark').val(d.watermarkSrc);
     this.$('#image-scale').val(d.imageScale);
     this.$('#font-size').val(d.fontSize);
+    this.$('#creditfont-size').val(d.creditSize);
     this.$('#font-family').val(d.fontFamily);
     this.$("#letter-spacing").val(d.letterSpacing);
     this.$('#text-align').val(d.textAlign);
     this.$('#text-shadow').prop('checked', d.textShadow);
+    this.$('#head-uppercase').prop('checked', d.headUppercase);
+    this.$('#source-uppercase').prop('checked', d.sourceUppercase);
     this.$('#overlay').find('[value="'+d.overlayColor+'"]').prop('checked', true);
   },
 
@@ -75,15 +81,19 @@ MEME.MemeEditorView = Backbone.View.extend({
     'input #image-scale': 'onScale',
     "change #aspect-ratio": "onAspectRatio",
     'change #font-size': 'onFontSize',
+    'change #credit-font-size': 'onCreditFontSize',
     'change #font-family': 'onFontFamily',
     "change #letter-spacing": "onLetterSpacing",
     'change #watermark': 'onWatermark',
     'change #text-align': 'onTextAlign',
     'change #text-shadow': 'onTextShadow',
+    'change #head-uppercase': 'onHeadUppercase',
+    'change #source-uppercase': 'onSourceUppercase',
     'change [name="overlay"]': 'onOverlayColor',
     'dragover #dropzone': 'onZoneOver',
     'dragleave #dropzone': 'onZoneOut',
-    'drop #dropzone': 'onZoneDrop'
+    'drop #dropzone': 'onZoneDrop',
+    'change #loadinput': 'onFileLoad'
   },
 
   onCredit: function() {
@@ -104,10 +114,22 @@ MEME.MemeEditorView = Backbone.View.extend({
   onTextShadow: function() {
     this.model.set('textShadow', this.$('#text-shadow').prop('checked'));
   },
+    onHeadUppercase: function() {
+    this.model.set('headUppercase', this.$('#head-uppercase').prop('checked'));
+  },
+
+  onSourceUppercase: function() {
+    this.model.set('sourceUppercase', this.$('#source-uppercase').prop('checked'));
+  },
 
   onFontSize: function() {
     this.model.set('fontSize', this.$('#font-size').val());
   },
+
+  onCreditFontSize: function() {
+    this.model.set('creditSize', this.$('#credit-font-size').val());
+  },
+  
   
   onLetterSpacing: function() {
     this.model.set("letterSpacing", this.$("#letter-spacing").val())
@@ -154,5 +176,16 @@ MEME.MemeEditorView = Backbone.View.extend({
       this.model.loadBackground(dataTransfer.files[0]);
       this.$('#dropzone').removeClass('pulse');
     }
-  }
+ },
+  
+  onFileLoad: function(evt){
+    input = evt.target
+    if (input.files && input.files[0]) {
+      this.model.loadBackground(input.files[0]);
+      this.$('#dropzone').removeClass('pulse');
+    }
+  } 
+  
+
+
 });
